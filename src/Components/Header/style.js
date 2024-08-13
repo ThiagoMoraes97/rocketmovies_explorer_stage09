@@ -8,6 +8,7 @@ export const Container = styled.div`
   height: 116px;
   background-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
   border-bottom: 1px solid ${({theme}) => theme.COLORS.GRAY_500};
+  grid-area: header;
 
   > h2 {
     font-size: 24px;

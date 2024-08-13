@@ -1,6 +1,7 @@
 import { Container, Content } from "./style";
 import { Header } from "../../Components/Header"
 import { Button } from "../../Components/Button";
+import { Note } from "../../Components/Note";
 import { FiPlus } from "react-icons/fi";
 
 export function Home () {
@@ -15,7 +16,12 @@ export function Home () {
         </header>
 
         <main>
-
+          <Note isSelected tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note isSelected tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note isSelected tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note isSelected tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note isSelected tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
         </main>
       </Content>
     </Container>
