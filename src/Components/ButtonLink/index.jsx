@@ -1,8 +1,9 @@
 import { Container } from "./style";
 
-export function ButtonLink ({title, ...rest}) {
+export function ButtonLink ({title, icon: Icon ,...rest}) {
   return (
-    <Container {...rest}>
+    <Container {...rest }>
+      {Icon && <Icon/>}
       {title}
     </Container>
   )

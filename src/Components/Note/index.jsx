@@ -2,18 +2,18 @@ import { Container } from "./style";
 import { Tags } from "../Tags";
 import { IoStar, IoStarOutline  } from "react-icons/io5";
 
-export function Note ({tag, isSelected = false}) {
+export function Note ({tag, oneStar = false,  twoStar = false,  threeStar = false,  fourStar = false,  fiveStar = false}) {
   return(
-    <Container type="button">
+    <Container>
 
       <header>
         <h1>Interestellar</h1>
         <ul>
-          <li>{isSelected ? <IoStar/> : <IoStarOutline/>}</li>
-          <li>{isSelected ? <IoStar/> : <IoStarOutline/>}</li>
-          <li>{isSelected ? <IoStar/> : <IoStarOutline/>}</li>
-          <li>{isSelected ? <IoStar/> : <IoStarOutline/>}</li> 
-          <li>{isSelected ? <IoStar/> : <IoStarOutline/>}</li>
+          <li>{oneStar ? <IoStar/> : <IoStarOutline/>}</li>
+          <li>{(oneStar && twoStar) ? <IoStar/> : <IoStarOutline/>}</li>
+          <li>{(oneStar && twoStar && threeStar ) ? <IoStar/> : <IoStarOutline/>}</li>
+          <li>{(oneStar && twoStar && threeStar && fourStar ) ? <IoStar/> : <IoStarOutline/>}</li> 
+          <li>{(oneStar && twoStar && threeStar && fourStar && fiveStar ) ? <IoStar/> : <IoStarOutline/>}</li>
         </ul>
       </header>
 
