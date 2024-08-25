@@ -12,13 +12,13 @@ export function Home () {
       <Content>
         <header>
           <h1>Meus filmes</h1>
-          <Button icon={FiPlus} title="Adicionar filme"/>
+          <Button icon={FiPlus} title="Adicionar filme" link = "/create"/>
         </header>
 
         <main>
-          <Note oneStar twoStar threeStar tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
-          <Note oneStar twoStar tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
-          <Note oneStar tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note rating={4} tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note rating={2} tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
+          <Note rating={3} tag = {[{id: 1, name: "Ficção Científica"}, {id: 2, name: "Drama"}, {id: 3, name: "Família"} ]}/>
         </main>
       </Content>
     </Container>

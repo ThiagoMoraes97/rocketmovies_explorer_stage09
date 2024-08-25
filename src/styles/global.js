@@ -11,8 +11,9 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
     }
 
-    body, button, input {
+    body, button, input, textarea {
         font-family: "Roboto Slab", sans-serif;
+        font-size: 16px;
     }
 
     a , button {

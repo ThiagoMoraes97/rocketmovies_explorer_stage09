@@ -17,18 +17,6 @@ export const Container = styled.div`
       color: ${({theme}) => theme.COLORS.WHITE};
       margin-bottom: 8px;
     }
-
-    ul {
-      display: flex;
-      list-style: none;
-      gap: 6px;
-
-      li{
-        color: ${({theme}) => theme.COLORS.PINK};
-        background-color: none;
-      }
-
-    }
   }
 
   p{

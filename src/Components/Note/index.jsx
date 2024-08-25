@@ -1,20 +1,14 @@
 import { Container } from "./style";
 import { Tags } from "../Tags";
-import { IoStar, IoStarOutline  } from "react-icons/io5";
+import { Rating } from "../Rating";
 
-export function Note ({tag, oneStar = false,  twoStar = false,  threeStar = false,  fourStar = false,  fiveStar = false}) {
+export function Note ({tag, rating}) {
   return(
     <Container>
 
       <header>
         <h1>Interestellar</h1>
-        <ul>
-          <li>{oneStar ? <IoStar/> : <IoStarOutline/>}</li>
-          <li>{(oneStar && twoStar) ? <IoStar/> : <IoStarOutline/>}</li>
-          <li>{(oneStar && twoStar && threeStar ) ? <IoStar/> : <IoStarOutline/>}</li>
-          <li>{(oneStar && twoStar && threeStar && fourStar ) ? <IoStar/> : <IoStarOutline/>}</li> 
-          <li>{(oneStar && twoStar && threeStar && fourStar && fiveStar ) ? <IoStar/> : <IoStarOutline/>}</li>
-        </ul>
+        <Rating rating={rating}/>
       </header>
 
       <p>

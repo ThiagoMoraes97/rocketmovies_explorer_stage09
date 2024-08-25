@@ -4,8 +4,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   overflow-y: hidden;
-
-
 `;
 
 export const Content = styled.div`
@@ -36,6 +34,7 @@ export const Content = styled.div`
     max-height: 75%;
     overflow-y: auto;
     padding-right: 10px;
+
 
     &::-webkit-scrollbar {
       width: 8px;
