@@ -4,9 +4,48 @@ import { Tags } from "../../Components/Tags";
 import { ButtonLink } from "../../Components/ButtonLink";
 import { Rating } from "../../Components/Rating";
 import { FiArrowLeft, FiClock  } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../resources/api";
+import { useParams, useNavigate } from "react-router-dom";
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 
 
 export function Details() {
+
+  const { user } = useAuth();
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const avatarUrlImage = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}`: avatarPlaceholder;
+
+  const [ title, setTitle ] = useState("");
+  const [ rating, setRating ] = useState("");
+  const [ description, setDescription ] = useState("");
+  const [ updatedAt, setUpdatedAt ] = useState("");
+  const [ tags, setTags ] = useState([]);
+
+  function handleNavigateBack() {
+    navigate(-1)
+  };
+
+  useEffect(() => {
+    async function fetchNotes() {
+      const response = await api.get(`/notes/${id}`);
+      const noteDetails = response.data
+      
+      setTitle(noteDetails.title);
+      setRating(noteDetails.rating);
+      setDescription(noteDetails.description);
+      setTitle(noteDetails.title);
+      setUpdatedAt(noteDetails.updated_at);
+      setTags(noteDetails.tags);
+    };
+
+    fetchNotes();
+  }, [])
+
   return(
     <Container>
 
@@ -15,38 +54,39 @@ export function Details() {
       <main>
         <Main>
 
-          <ButtonLink title = "Voltar" icon = {FiArrowLeft}/>
+          <ButtonLink title = "Voltar" icon = {FiArrowLeft} onClick = {handleNavigateBack}/>
 
           <div className="movie_info">
-            <h1>Interestellar</h1>
-            <Rating rating = {4}/>
+            <h1>{title}</h1>
+            <Rating rating = {rating}/>
           </div>
 
           <div className="note_info">
             <div className="user_info">
-              <img src="https://github.com/ThiagoMoraes97.png" alt="Imagem de usuário." />
-              <p>Por <span>Thiago Moraes</span></p>
+            <img src={avatarUrlImage} alt = {`Imagem de ${user.name}`} />
+              <p>Por <span>{user.name}</span></p>
             </div>
 
             <div className="time_info">
               <FiClock/>
-              <p>23/05/22 às 08:00</p>
+              <p>{updatedAt}</p>
             </div>
 
           </div>
 
-          <div className="movie_tags">
-            <Tags title="Ficção Científica"/>
-            <Tags title="Drama"/>
-            <Tags title="Família"/>
-          </div>
+          {
+            tags && (
+              <div className="movie_tags">
+               {
+                tags.map( tag => (
+                  <Tags title={tag.name} key={tag.id}/>
+                ))
+               }
+              </div>
+            )
+          }
 
-          <p>
-            Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. A partida de Cooper devasta Murphy. <br /> <br />
-
-
-            Além de Cooper, a tripulação da Endurance é formada pela bióloga Amelia, filha de Brand; o cientista Romilly, o físico planetário Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca e se dirigem a Miller, porém descobrem que o planeta possui enorme dilatação gravitacional temporal por estar tão perto de Gargântua: cada hora na superfície equivale a sete anos na Terra. Eles entram em Miller e descobrem que é inóspito já que é coberto por um oceano raso e agitado por ondas enormes. Uma onda atinge a tripulação enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia descobrem que 23 anos se passaram.
-          </p>
+          <p>{description}</p>
         </Main>
       </main>
 

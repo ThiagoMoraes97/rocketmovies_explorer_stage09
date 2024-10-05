@@ -25,8 +25,9 @@ export const Content = styled.div`
       color: ${({theme}) => theme.COLORS.WHITE};
     }
 
-    button{
-      max-width: 200px;
+    a {
+      width: 200px;
+      text-decoration: none;
     }
   }
 

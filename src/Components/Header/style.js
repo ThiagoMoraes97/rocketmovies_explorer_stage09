@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -15,6 +16,7 @@ export const Container = styled.div`
     font-weight: 700;
     color: ${({theme}) => theme.COLORS.PINK};
     margin-right: 64px;
+    text-decoration: none;
   }
 `;
 
@@ -40,11 +42,12 @@ export const User = styled.div`
     }
   }
 
-  > img {
+  > a img {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     border: 2px solid ${({theme}) => theme.COLORS.GRAY_500};
+    object-fit: cover;
   }
 
 `;

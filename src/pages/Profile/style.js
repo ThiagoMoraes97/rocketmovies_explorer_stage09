@@ -57,6 +57,7 @@ export const Form = styled.form`
       width: 186px;
       height: 186px;
       border-radius: 50%;
+      object-fit: cover;
     }
   }
 
