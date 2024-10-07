@@ -14,10 +14,6 @@ export function Home () {
 
   const navigate = useNavigate();
 
-  function headerInputChanger (data) {
-    setSearch(data)
-  };
-
   useEffect(() => {
     async function fetchNotes() {
       const response = await api.get(`/notes?title=${search}`);
@@ -25,11 +21,15 @@ export function Home () {
     };
 
     fetchNotes();
-  }, [search])
+  }, [search]);
+
+  function handleSearchInputChange(inputValue) {
+    setSearch(inputValue);
+  }
 
   return(
     <Container>
-      <Header headerInput = {headerInputChanger}/>
+      <Header onInputChange={handleSearchInputChange}/>
 
       <Content>
         <header>

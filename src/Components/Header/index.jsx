@@ -4,28 +4,24 @@ import { ButtonLink } from "../ButtonLink";
 import { useAuth } from "../../hooks/auth";
 import { Link } from "react-router-dom";
 import { api } from "../../resources/api";
-import { useEffect, useState } from "react";
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 
 
-export function Header ({headerInput}) {
+export function Header ({ onInputChange }) {
 
   const { user, signOut } = useAuth();
-
-  const [ inputValue, setInputValue ] = useState("");
   
-
   const avatarUrlImage = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}`: avatarPlaceholder;
 
-  useEffect(() => {
-    headerInput(inputValue);
-  }, [inputValue])
+  function handleInputChange(e) {
+    onInputChange(e.target.value);  
+  };
   
   return(
     <Container>
       <h2 to={"/"}>RocketMovies</h2>
 
-      <Input type="text" placeholder = "Pesquisar pelo título" onChange = {e => setInputValue(e.target.value)}/>
+      <Input type="text" placeholder = "Pesquisar pelo título" onChange = {handleInputChange}/>
 
       <User>
         <div className="user_info">

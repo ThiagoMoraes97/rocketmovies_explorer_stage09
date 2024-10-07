@@ -6,13 +6,16 @@ import{ Input } from "../../Components/Input"
 import{ Mark } from "../../Components/Mark"
 import{ Textarea } from "../../Components/Textarea"
 import { FiArrowLeft } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { api } from "../../resources/api";
+import { useNavigate } from "react-router-dom";
 
 export function Create () {
   const [ title, setTitle] = useState("");
   const [rating, setRating ] = useState("");
   const [ description, setDescription ] = useState("");
+
+  const navigate = useNavigate();
 
   const [ tags, setTags ] = useState([]);
   const [ newTag, setNewTag] = useState("");
@@ -53,6 +56,8 @@ export function Create () {
       });
 
       alert("Nota adicionada com sucesso!");
+
+      navigate("/");
 
     } catch (error) {
 
